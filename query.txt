@@ -1,0 +1,14 @@
+●    Selezionare tutti gli ospiti
+	SELECT * FROM `ospiti` WHERE 1
+●    Selezionare tutti gli ospiti con document type = a CI
+●    Selezionare i paganti che abbiano un ospite id associato
+●    Selezionare tutte le stanze del primo piano
+●    Selezionare tutti gli ospiti che iniziano per E
+●    Selezionare tutti gli ospiti che abbiano meno di 30 anni
+●    Seleziona tutte le prenotazioni precedenti a maggio 2018
+●    Selezionare tutti gli ospiti con document type = a CI
+●    Selezionare i paganti che abbiano un ospite id associato
+●    Selezionare tutte le stanze del primo piano
+●    Selezionare tutti gli ospiti che iniziano per E
+●    Selezionare tutti gli ospiti che abbiano meno di 30 anni
+●    Seleziona tutte le prenotazioni precedenti a maggio 2018
