@@ -18,6 +18,10 @@
 	FROM `ospiti` 
 	WHERE `name` LIKE 'E%';
 ●    Selezionare tutti gli ospiti che abbiano meno di 30 anni
+	SELECT * 
+	FROM `ospiti` 
+	WHERE EXTRACT(YEAR
+	FROM age(CURRENT_DATE, date_of_birth)) < 30;
 ●    Seleziona tutte le prenotazioni precedenti a maggio 2018
 ●    Selezionare tutti gli ospiti con document type = a CI
 ●    Selezionare i paganti che abbiano un ospite id associato
