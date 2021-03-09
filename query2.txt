@@ -1,27 +1,58 @@
-●    Selezionare tutti gli ospiti
-	SELECT * 
-	FROM `ospiti` 
-●    Selezionare tutti gli ospiti con document type = a CI
+ ●    Selezionare tutti gli ospiti con document type = a CI
 	SELECT * 
 	FROM `ospiti` 
 	WHERE document_type = "CI";
-●    Selezionare i paganti che abbiano un ospite id associato
+●    Seleziona tutti gli ospiti che sono nati dopo il 1988
 	SELECT * 
-	FROM `paganti` 
-	WHERE `ospite_id` IS NOT NULL;
-●    Selezionare tutte le stanze del primo piano
-	SELECT `room_number` 
-	FROM `stanze` 
-	WHERE `floor` = 1;
-●    Selezionare tutti gli ospiti che iniziano per E
+	FROM `ospiti` 
+	WHERE date_of_birth > "1988-12-31";
+●    Seleziona tutti gli ospiti che hanno più di 20 anni (al momento dell’esecuzione della query)
+	SELECT *,TIMESTAMPDIFF(YEAR,`date_of_birth`, CURRENT_TIMESTAMP ) AS age
+	FROM `ospiti`
+	WHERE TIMESTAMPDIFF(YEAR,`date_of_birth`, CURRENT_TIMESTAMP ) = 20;
+●    Seleziona tutti gli ospiti il cui nome inizia con la D
 	SELECT `name` 
 	FROM `ospiti` 
-	WHERE `name` LIKE 'E%';
-●    Selezionare tutti gli ospiti che abbiano meno di 30 anni
+	WHERE `name` LIKE 'D%';
+●    Calcola il totale degli ordini accepted
+	SELECT SUM(price), status 
+	FROM pagamenti 
+ 	WHERE status = 'accepted';
+●    Qual è il prezzo massimo pagato?
+	SELECT MAX(price)
+	FROM `pagamenti`;
+●    Seleziona gli ospiti riconosciuti con patente e nati nel 1975
+	SELECT *
+	FROM ospiti
+	WHERE document_type = "Driver License"
+	AND date_of_birth BETWEEN '1975-01-01' AND  '1975-12-31' ;
+●    Quanti paganti sono anche ospiti?
 	SELECT * 
-	FROM `ospiti` 
-	WHERE `date_of_birth` < NOW() - INTERVAL 30 YEAR;
-●    Seleziona tutte le prenotazioni precedenti a maggio 2018
-	SELECT * 
-	FROM `prenotazioni` 
-	WHERE created_at < "2018-05-01";
+	FROM `paganti` 
+	INNER JOIN ospiti
+	ON paganti.ospite_id = ospiti.id;
+●    Quanti posti letto ha l’hotel in totale?
+	SELECT sum(beds) 
+	FROM `stanze`;
+Group by
+●    Conta gli ospiti raggruppandoli per anno di nascita
+
+●    Somma i prezzi dei pagamenti raggruppandoli per status
+	SELECT
+		status,
+    	SUM(price)
+    	FROM
+    	pagamenti
+    	GROUP BY status;
+●    Conta quante volte è stata prenotata ogni stanza
+●    Fai una analisi per vedere se ci sono ore in cui le prenotazioni sono più frequenti
+●    Quante prenotazioni ha fatto l’ospite che ha fatto più prenotazioni?
+
+Join
+●    Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
+●    Stampare tutti gli ospiti per ogni prenotazione
+●    Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
+●    Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
+●    Prendi i dati di fatturazione per la prenotazione con id=7
+●    Le stanze sono state tutte prenotate almeno una volta? (Visualizzare le stanze non ancora prenotate)
+	
