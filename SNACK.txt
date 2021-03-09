@@ -1,0 +1,23 @@
+Selezionare i paganti e i relativi dati ospite
+SELECT * 
+FROM `paganti` 
+INNER JOIN ospiti
+ON paganti.ospite_id = ospiti.id;
+
+SELECT * 
+FROM `paganti` 
+LEFT JOIN ospiti
+ON ospiti.id = paganti.ospite_id;
+
+
+Selezionare tutti i pagamenti con i dati relativi alla prenotazione
+SELECT * 
+FROM `pagamenti` 
+INNER JOIN prenotazioni
+ON pagamenti.pagante_id = prenotazioni.id;
+
+SELECT * 
+FROM `pagamenti` 
+JOIN prenotazioni
+ON prenotazioni.id = pagamenti.prenotazione_id;
+
